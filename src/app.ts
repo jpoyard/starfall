@@ -12,17 +12,23 @@ const config: Phaser.Types.Core.GameConfig = {
   physics: {
     default: "arcade",
     arcade: {
-      debug: false
-    }
+      debug: false,
+    },
   },
-  backgroundColor: "#000033"
+  backgroundColor: "#000033",
 };
 
 export class StarfallGame extends Phaser.Game {
-    constructor(config) {
-        super(config);
-    }
+  constructor(config) {
+    super(config);
+  }
 }
+
 window.onload = () => {
-    var game = new StarfallGame(config);
+  const gameElt = document.querySelector("#game");
+  var game = new StarfallGame({
+    ...config,
+    width: gameElt.clientWidth,
+    height: gameElt.clientHeight,
+  });
 };
